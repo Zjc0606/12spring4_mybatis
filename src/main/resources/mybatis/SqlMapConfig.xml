@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 全局配置参数，需要时再设置 -->
+    <settings>
+        <!--在控制台使用log4j打印sql-->
+        <setting name="logImpl" value="LOG4J" />
+    </settings>
+
+    <!--别名定义-->
+    <typeAliases>
+        <!-- 单个别名定义
+        alias:别名
+        type:类型的路径
+        -->
+        <!--<typeAlias alias="user" type="com.zjc.mybatis.po.User"/>-->
+        <!-- 批量别名定义，扫描整个包下的类，别名为类名（首字母大写或小写都可以） -->
+        <package name="com.zjc.sm.pojo"/>
+
+    </typeAliases>
+
+
+    <!--加载映射文件-->
+    <mappers>
+        <mapper resource="mappers/User.xml"/>
+        <!--<mapper resource="mappers/UserMapper.xml"/>-->
+
+        <!--通过mapper接口加载映射文件
+        遵循一些规范：需要将mapper接口类名和mapper.xml名称保持一致，且在同一个目录中
+        上边规范的前提是：使用的是mapper代理方法
+        -->
+
+        <!--<mapper class="com.zjc.mybatis.mapper.UserMapper"/>-->
+        <!--批量加载mapper (推荐使用)
+        制定mapper接口的包名，mybatis自动扫描包下所有mapper接口进行加载
+        遵循一些规范：需要将mapper接口类名和mapper.xml名称保持一致，且在同一个目录中
+        上边规范的前提是：使用的是mapper代理方法
+
+        和spring整合后，使用mapper扫描器，这里不需要配置
+        -->
+        <!--<package name="com.zjc.sm.mapper"/>-->
+    </mappers>
+</configuration>
